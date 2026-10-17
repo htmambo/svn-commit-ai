@@ -1,0 +1,65 @@
+{
+  "name": "svn-commit-ai",
+  "displayName": "SVN Commit Message AI",
+  "description": "Generate SVN commit messages in Source Control using Copilot language models.",
+  "version": "0.0.4",
+  "publisher": "local",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "SCM Providers",
+    "Other"
+  ],
+  "extensionDependencies": [
+    "johnstoncode.svn-scm"
+  ],
+  "activationEvents": [],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "svnCommitAI.generate",
+        "title": "Generate SVN Commit Message",
+        "icon": "$(sparkle)"
+      }
+    ],
+    "menus": {
+      "scm/inputBox": [
+        {
+          "command": "svnCommitAI.generate",
+          "when": "scmProvider == svn",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "SVN Commit Message AI",
+      "properties": {
+        "svnCommitAI.language": {
+          "type": "string",
+          "default": "中文",
+          "description": "Language of the generated commit message."
+        },
+        "svnCommitAI.style": {
+          "type": "string",
+          "default": "Conventional Commits: a concise subject line (<= 72 chars), a blank line, then bullet points for key changes.",
+          "description": "Style instructions for the commit message."
+        },
+        "svnCommitAI.maxDiffChars": {
+          "type": "number",
+          "default": 60000,
+          "description": "Maximum diff characters sent to the model."
+        },
+        "svnCommitAI.modelFamily": {
+          "type": "string",
+          "default": "",
+          "description": "Optional model family (e.g. gpt-4o). Empty = first available Copilot model."
+        }
+      }
+    }
+  },
+  "enabledApiProposals": [
+    "contribSourceControlInputBoxMenu"
+  ]
+}
