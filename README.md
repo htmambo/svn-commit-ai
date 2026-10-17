@@ -21,6 +21,8 @@
 
 ### 1. 安装 VSIX
 
+从 [Releases](https://github.com/htmambo/svn-commit-ai/releases/latest) 下载 `svn-commit-ai-0.0.4.vsix`，然后：
+
 ```bash
 code --install-extension svn-commit-ai-0.0.4.vsix
 ```
